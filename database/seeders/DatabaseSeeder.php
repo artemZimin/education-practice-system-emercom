@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Faculty::factory(20)->create()->each(function ($faculty) {
-            Department::factory(2)->create(['faculty_id' => $faculty->id]);
+            // Department::factory(2)->create(['faculty_id' => $faculty->id]);
             StudyGroup::factory(5)->create(['faculty_id' => $faculty->id]);
         });
         Organization::factory(20)->create();

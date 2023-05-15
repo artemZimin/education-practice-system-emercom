@@ -12,7 +12,7 @@
                         </v-list>
                     </v-card>
                 </v-col>
-                <v-col>
+                <v-col style="overflow-x: scroll;">
                     <slot/>
                 </v-col>
             </v-row>
