@@ -15,6 +15,7 @@ class StudyGroup extends Model
         'headman_full_name',
         'headman_phone_number',
         'course',
+        'faculty_id'
     ];
 
     public function faculty(): BelongsTo

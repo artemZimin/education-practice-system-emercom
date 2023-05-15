@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('director_full_name', 50);
 //            телефон руководителя
             $table->string('director_phone_number', 20);
-            $table->foreignId('faculty_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

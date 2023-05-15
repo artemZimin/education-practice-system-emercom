@@ -23,7 +23,15 @@ Route::get('/', function () {
 
 Route::resource('faculty', \App\Http\Controllers\FacultyController::class);
 Route::resource('study-group', \App\Http\Controllers\StudyGroupController::class);
+Route::resource('contract', \App\Http\Controllers\ContractController::class);
+Route::resource('direction', \App\Http\Controllers\DirectionController::class);
+Route::resource('organization', \App\Http\Controllers\OrganizationController::class);
+Route::resource('practical-training', \App\Http\Controllers\PracticalTrainingController::class);
+Route::resource('practice', \App\Http\Controllers\PracticeController::class);
+Route::resource('practice-documents', \App\Http\Controllers\PracticeDocumentsController::class);
+Route::resource('profile', \App\Http\Controllers\ProfileController::class);
+Route::resource('reporting-documents', \App\Http\Controllers\ReportingDocumentsController::class);
+Route::resource('student', \App\Http\Controllers\StudentController::class);
+Route::resource('teacher', \App\Http\Controllers\TeacherController::class);
+Route::resource('department', \App\Http\Controllers\DepartmentController::class);
 
-Route::get('/about', function () {
-    return \Inertia\Inertia::render('About');
-})->name('about');

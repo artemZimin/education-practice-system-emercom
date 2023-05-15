@@ -7,6 +7,7 @@ use App\Services\Resources\IndexResourceService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
 class ResourceController extends Controller
@@ -14,6 +15,7 @@ class ResourceController extends Controller
     public Model $model;
     public string $resource;
     public array $relates = [];
+    public array $validations = [];
     /**
      * Display a listing of the resource.
      */
@@ -56,9 +58,19 @@ class ResourceController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        $this->model->create($request->all());
-        redirect()->route($this->resource . '.index');
+        $data = $request->input('data');
+
+        $validator = Validator::make($data, $this->validations);
+        $validator->validated();
+
+        foreach ($request->input('relates') as $relate)
+        {
+            $data[$relate['relateField']] = $relate['value'];
+        }
+
+        $this->model->create($data);
+
+        return response()->redirectToRoute($this->resource . '.index');
     }
 
     /**

@@ -14,8 +14,16 @@ class StudyGroupController extends ResourceController
             [
                 'db' => 'faculties',
                 'title' => 'Факультет',
-                'resource' => 'faculty'
+                'resource' => 'faculty',
+                'relateField' => 'faculty_id'
             ]
+        ];
+
+        $this->validations = [
+            'group_number' => ['required', 'integer'],
+            'headman_full_name' => ['required', 'max:50'],
+            'headman_phone_number' => ['required', 'max:20'],
+            'course' => ['required', 'integer'],
         ];
     }
 }

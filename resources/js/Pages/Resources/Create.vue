@@ -1,6 +1,6 @@
 <template>
     <main-layout>
-        <create-resource :title="resourceData.title" :fields="fields" :resource="resource" :relates="relates" />
+        <create-resource :title="resourceData.title" :fields="fields" :resource="resource" :relates="relates" :errors="errors" />
     </main-layout>
 </template>
 
@@ -13,6 +13,7 @@ import resources from '../../data/resources.js';
 const props = defineProps({
     resource: String,
     relates: Array,
+    errors: Object,
 })
 
 const resourceData = resources[props.resource].create

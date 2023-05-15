@@ -32,7 +32,7 @@ watch(selected, () => {
         selected.value = [selected.value.pop()]
     }
 
-    emit('pickRelate', { db: props.relate.db, value: selected.value[0] })
+    emit('pickRelate', { db: props.relate.db, value: selected.value[0], relateField: props.relate.relateField })
 })
 
 </script>

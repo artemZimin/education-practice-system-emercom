@@ -47,7 +47,12 @@
                 <td>
                     <v-checkbox :value="dataItem.id" v-model="checkedFields" class="d-flex align-center"></v-checkbox>
                 </td>
-                <td v-for="field of fields">{{ dataItem[field.name] }}</td>
+                <td v-for="field of fields">
+                    <template v-if="field.type === 'file'">
+                        <v-btn color="primary" variant="outlined" @click="downloadFile(dataItem[field.name])">Скачать файл</v-btn>
+                    </template>
+                    <template v-else>{{ dataItem[field.name] }}</template>
+                </td>
                 <td>
                     <div class="d-flex justify-center align-center w-100 h-100">
                         <Link :href="route(`${resource}.show`, dataItem.id)" as="div">
@@ -116,7 +121,22 @@ const queryString = window.location.search;
 const params = new URLSearchParams(queryString);
 const searchObject = params.get('search') ? JSON.parse(decodeURIComponent(params.get('search'))) : params.get('search');
 
-console.log(searchObject)
+const downloadFile = data => {
+    const fileName = Date.now() + '.docx'
+    const blob = new Blob([data], { type: 'application/octet-stream' });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = fileName;
+
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
 
 const searchItem = ref(searchObject ? props.fields.find(field => field.name == searchObject.field).title : searchItems[0])
 const searchText = ref(searchObject ? searchObject.value : '')

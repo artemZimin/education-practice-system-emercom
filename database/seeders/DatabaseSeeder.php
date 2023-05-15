@@ -36,17 +36,15 @@ class DatabaseSeeder extends Seeder
             Department::factory(2)->create(['faculty_id' => $faculty->id]);
             StudyGroup::factory(5)->create(['faculty_id' => $faculty->id]);
         });
-//        StudyGroup::factory(100)->create();
-//        Organization::factory(20)->create();
-//        Contract::factory(100)->create();
-//        Department::factory(80)->create();
-//        Student::factory(80)->create();
-//        PracticeDocuments::factory(80)->create();
-//        Direction::factory(20)->create();
-//        Teacher::factory(80)->create();
-//        PracticalTraining::factory(80)->create();
-//        ReportingDocuments::factory(80)->create();
-//        Practice::factory(80)->create();
-//        Profile::factory(20)->create();
+        Organization::factory(20)->create();
+        Contract::factory(100)->create();
+        Student::factory(80)->create();
+        PracticeDocuments::factory(80)->create();
+        Direction::factory(20)->create();
+        Teacher::factory(80)->create();
+        PracticalTraining::factory(80)->create();
+        ReportingDocuments::factory(80)->create();
+        Practice::factory(80)->create();
+        Profile::factory(20)->create();
     }
 }
